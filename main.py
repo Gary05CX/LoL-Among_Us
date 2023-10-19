@@ -30,7 +30,7 @@ def random_imposter(number_of_player):
 
 
 
-ef send_email(player_email, player_role):
+def send_email(player_email, player_role):
     with open('password.json','r',encoding='utf8') as jfile:
         jdata = json.load(jfile)
 
