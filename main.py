@@ -1,7 +1,7 @@
 import random
 import email.message
 import smtplib
-import time
+import time as t
 import json
 
 
@@ -66,7 +66,10 @@ def TXT_rec(number_of_player, email_list, imposter_list):
 
 def main():
     number_of_player = mode_setup() 
-    if number_of_player <= 3 or number_of_player >= 5:
+    if number_of_player < 3 or number_of_player > 5:
+        print("ERROR!")
+        print("player's number must be between 3 & 5.")
+        t.sleep(3)
         return
     
     i = 0
