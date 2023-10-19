@@ -4,10 +4,13 @@ import smtplib
 import time
 import json
 
+
+
 def mode_setup():
     print("How many player (3~5):")
     number_of_player = int(input())
     return number_of_player
+
 
 def get_player_email(number_of_player):
     i = 0
@@ -17,6 +20,7 @@ def get_player_email(number_of_player):
         player_email_list.append(str(input()))
         i = i + 1
     return player_email_list
+
 
 def random_imposter(number_of_player):
     i = 0
@@ -29,11 +33,9 @@ def random_imposter(number_of_player):
     return imposter_list
 
 
-
 def send_email(player_email, player_role):
     with open('password.json','r',encoding='utf8') as jfile:
         jdata = json.load(jfile)
-
 
     msg = email.message.EmailMessage()
     msg["From"] = jdata['email']
@@ -45,6 +47,7 @@ def send_email(player_email, player_role):
     server.login(jdata['email'], jdata['password'])
     server.send_message(msg)
     server.close()
+
 
 def TXT_rec(number_of_player, email_list, imposter_list):
     i = 0
@@ -59,6 +62,7 @@ def TXT_rec(number_of_player, email_list, imposter_list):
         file.write(player_roles)
         file.write("\n")
     file.close()
+
 
 def main():
     i = 0
@@ -75,6 +79,8 @@ def main():
         send_email(player_email, player_role)
         i = i + 1
     TXT_rec(number_of_player, email_list, imposter_list)
+
+
 
 if __name__ == "__main__":
     main()
