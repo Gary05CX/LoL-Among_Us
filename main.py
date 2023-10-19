@@ -47,6 +47,7 @@ def send_email(player_email, player_role):
     server.login(jdata['email'], jdata['password'])
     server.send_message(msg)
     server.close()
+    print(f"Email to {player_email} has been sent.")
 
 
 def TXT_rec(number_of_player, email_list, imposter_list):
@@ -62,6 +63,7 @@ def TXT_rec(number_of_player, email_list, imposter_list):
         file.write(player_roles)
         file.write("\n")
     file.close()
+    print("The .txt file has been done.")
 
 
 def main():
@@ -90,3 +92,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+    print("Programm finished.")
