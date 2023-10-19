@@ -30,19 +30,19 @@ def random_imposter(number_of_player):
 
 
 
-def send_email(player_email, player_role):
+ef send_email(player_email, player_role):
     with open('password.json','r',encoding='utf8') as jfile:
         jdata = json.load(jfile)
 
 
     msg = email.message.EmailMessage()
-    msg["From"] = "a1itt1eb0tbotac@gmail.com"
+    msg["From"] = jdata['email']
     msg["To"] = player_email
     msg["Subject"] = player_role
     msg.set_content(f"You are {player_role} player.")
 
     server = smtplib.SMTP_SSL("smtp.gmail.com", 465)
-    server.login("a1itt1eb0tbotac@gmail.com", jdata['password'])
+    server.login(jdata['email'], jdata['password'])
     server.send_message(msg)
     server.close()
 
