@@ -65,8 +65,11 @@ def TXT_rec(number_of_player, email_list, imposter_list):
 
 
 def main():
+    number_of_player = mode_setup() 
+    if number_of_player <= 3 or number_of_player >= 5:
+        return
+    
     i = 0
-    number_of_player = mode_setup()
     email_list = get_player_email(number_of_player)
     imposter_list = random_imposter(number_of_player)
 
